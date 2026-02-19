@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grom Montaža - Suha gradnja</title>
+  <meta name="description" content="Profesionalne renovacije interijera - kvaliteta, brzina, pouzdanost." />
+  <link rel="icon" type="image/png" sizes="32x32" href="resources/grom-montaza-dark-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --dark: #0d1420;
+      --text: #d0d8e5;
+      --accent: #001f3f;
+      /* navy blue from logo */
+      --gold: #d4af37;
+      /* gold lightning & circle */
+      --gold-dark: #b8962e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #806924;
+    }
+
+    /* Header / Hero */
+    header {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--dark), var(--bg));
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-img {
+      max-width: 380px;
+      height: auto;
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+      background: white;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(13, 20, 32, 0.85);
+      backdrop-filter: blur(5px);
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--gold);
+    }
+
+    /* Sections */
+    section {
+      padding: 8rem 5% 6rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'Orbitron', monospace;
+      font-size: 3.2rem;
+      color: white;
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Showcase grid */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: rgba(20, 30, 50, 0.4);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    /* Contact */
+    form {
+      max-width: 580px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 1rem 1.4rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    button {
+      padding: 1.1rem;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--dark);
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        padding: 2rem;
+        text-align: center;
+        gap: 1.8rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      section {
+        padding: 6rem 4% 4rem;
+      }
+
+      h2 {
+        font-size: 2.6rem;
+      }
+    }
+
+    /* Full-screen preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      /* #0d1420 or your navy */
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s ease-out;
+    }
+
+    /* Center wrapper */
+    .loader-content {
+      text-align: center;
+      position: relative;
+    }
+
+    .orbit-loader {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      inset: 0;
+      border: 3px solid transparent;
+      border-top-color: var(--gold);
+      /* gold ring */
+      border-radius: 50%;
+      animation: spin 3s linear infinite;
+      opacity: 0.7;
+    }
+
+    .dot-1 {
+      animation-delay: 0s;
+    }
+
+    .dot-2 {
+      animation-delay: -1s;
+    }
+
+    .dot-3 {
+      animation-delay: -2s;
+    }
+
+    .dot-4 {
+      animation-delay: -3s;
+    }
+
+    */
+
+    /* Text below animation */
+    .loading-text {
+      color: var(--gold);
+      font-family: 'Orbitron', monospace;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      opacity: 0.9;
+      animation: pulse-text 2s infinite ease-in-out;
+    }
+
+    /* Animations */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes orbit {
+      0% {
+        transform: rotate(0deg) translateY(-60px) rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg) translateY(-60px) rotate(-360deg);
+      }
+    }
+
+    @keyframes pulse-text {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Fade out when done */
+    #preloader.fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="orbit-loader">
+        <div class="orbit-ring"></div>
+      </div>
+      <p class="loading-text">Učitavanje...</p>
+    </div>
+  </div>
+
+  <div class="foreground">
+    <nav>
+      <div class="nav-logo">Grom Montaža</div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
+        <a href="#o-nama">Tko smo</a>
+        <a href="#showcase">Što radimo</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+
+    <header id="hero">
+      <div class="hero-content">
+        <div class="logo-container">
+          <img src="resources/grom-montaza-dark-logo.jpg" alt="Grom Montaža Logo" class="logo-img">
+        </div>
+        <h1>Grom Montaža</h1>
+        <p class="tagline">Profesionalne renovacije interijera • Montažne konstrukcije • Brzo • Kvalitetno • Pouzdano
+        </p>
+        <a href="#kontakt" class="btn">Zatražite ponudu →</a>
+      </div>
+    </header>
+
+    <section id="o-nama">
+      <h2>Tko smo</h2>
+      <p style="max-width: 780px; margin: 0 auto; text-align: center; font-size: 1.15rem; opacity: 0.9;">
+        Grom Montaža je tim iskusnih stručnjaka specijaliziran za renovacije stambenih i poslovnih prostora te suhu
+        gradnju.
+        Kombiniramo brzinu montažnih sustava s vrhunskim završnim radovima i modernim dizajnom.
+        Vaš prostor - naša strast.
+      </p>
+    </section>
+
+    <section id="showcase" style="background: var(--dark);">
+      <h2>Projekti</h2>
+      <div class="showcase-grid">
+
+        <div class="card">
+          <img src="https://ballroombaths.com/wp-content/uploads/2023/07/bathroom-remodel-17.jpg"
+            alt="Renovacija kupaonice">
+          <div class="card-content">
+            <h3>Renovacija kupaonice</h3>
+            <p>Kompletna preinaka starog u modernu, funkcionalnu oazu.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/5ac2ddf285ede15e39a57666/1649632249123-GEXR31L96U6QBBQAFTL6/Design-Anthology-2022-04+Light+_+Dark+apartment%2C+Tainan+-+Degree+Design-Degree_Design_BBBLACK-079.jpg"
+            alt="Tamni moderni interijer">
+          <div class="card-content">
+            <h3>Moderni dnevni boravak</h3>
+            <p>Moody dizajn s naglaskom na tamne tonove i premium materijale.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://cdn-clkao.nitrocdn.com/FAgYdlQakZCMXfQcyaKsDpDIGpUettyM/assets/images/optimized/rev-e6d38f2/fontanarchitecture.com/wp-content/uploads/2020/03/Modern-Apartment-Design-in-NYC.jpg"
+            alt="Luksuzni apartman">
+          <div class="card-content">
+            <h3>Luksuzni apartman</h3>
+            <p>Potpuna adaptacija s fokusom na eleganciju i detalje.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://media.admiddleeast.com/photos/6603d88dce2d2b5f031c2451/16:9/w_2560%2Cc_limit/Quiet%2520Luxury%252014.png"
+            alt="Quiet luxury dnevni boravak">
+          <div class="card-content">
+            <h3>Quiet luxury renovacija</h3>
+            <p>Minimalistički, sofisticirani prostor s prirodnim materijalima.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <input type="text" name="ime" placeholder="Ime i prezime" required>
+        <input type="tel" name="telefon" placeholder="Broj telefona" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="poruka" rows="5" placeholder="Vaša poruka / opis projekta..." required></textarea>
+        <button type="submit">Pošalji upit</button>
+      </form>
+    </section>
+    <footer>
+      Grom Montaža ©2026 | Profesionalne renovacije i suha gradnja
+    </footer>
+  </div>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  <script>
+    const originalTitle = document.title;
+    const comeBackTitle = "Vratite se!";
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        document.title = comeBackTitle;
+      } else {
+        document.title = "Dobrodošli natrag!";
+        setTimeout(() => {
+          document.title = originalTitle;
+        }, 700);
+      }
+    });
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        setTimeout(() => {
+          preloader.classList.add('fade-out');
+          setTimeout(() => {
+            preloader.remove();
+          }, 1200);
+        }, 500);
+      }
+    });
+  </script>
+</body>
+
+</html>
